@@ -1,29 +1,31 @@
-export template ScaleDegree (
-	name : text,
-	half_steps_above_root : int(0..11),
-) {
+export template ScaleDegree {
 	data {
-		name,
-		half_steps_above_root,
+		name : text,
+		half_steps_above_root : int(0..11),
 	}
 
-	pub name (self) => text {
+	constructor (name : text, half_steps_above_root : int(0..11)) {
+		self.name = name;
+		self.half_steps_above_root = half_steps_above_root;
+	}
+
+	pub name () => text {
 		return self.name;
 	}
 
-	pub half_steps_above_root (self) => int(0..11) {
+	pub half_steps_above_root () => int(0..11) {
 		return self.half_steps_above_root;
 	}
 
-	pub half_steps_below_root (self) => int(0..11) {
+	pub half_steps_below_root () => int(0..11) {
 		return 12 - self.half_steps_above_root();
 	}
 
-	pub whole_steps_above_root (self) => float(0..5.5) {
-		return self.in_half_steps() / 2;
+	pub whole_steps_above_root () => float(0..5.5) {
+		return self.half_steps_above_root() / 2;
 	}
 
-	pub whole_steps_below_root (self) => float(0..5.5) {
+	pub whole_steps_below_root () => float(0..5.5) {
 		return self.half_steps_below_root() / 2;
 	}
 }

@@ -3,26 +3,28 @@ import Note from @path(root/music/notes);
 
 import ScaleDegree from @path(root/music/scale_degrees);
 
-export template Chord (
-	name : text,
-	root : DiatonicNote,
-	scale_degrees : [1..35] ScaleDegree, -- [bb, b, , #, ##] (5) x [C, D, E, F, G, A, B] (7) = 5 x 7 = 35
-) {
+export template Chord {
 	data {
-		name,
-		root,
-		scale_degrees,
+		name : text,
+		root : DiatonicNote,
+		scale_degrees : [1..35] ScaleDegree,
 	}
 
-	pub name (self) => text {
+	constructor (name : text, root : DiatonicNote, scale_degrees : [1..35] ScaleDegree) {
+		self.name = name;
+		self.root = root;
+		self.scale_degrees = scale_degrees;
+	}
+
+	pub name () => text {
 		return ({self.root.name} {self.name});
 	}
 
-	pub formula (self) => [1..35] ScaleDegree {
+	pub formula () => [1..35] ScaleDegree {
 		return self.scale_degrees;
 	}
 
-	pub notes (self) => [1..35] ScaleDegree {
+	pub notes () => [1..35] ScaleDegree {
 		return self.scale_degrees.map(scale_degree => root.get_neighbour(scale_degree));		
 	}
 }
