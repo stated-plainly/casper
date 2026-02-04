@@ -23,6 +23,6 @@ export template Chord (
 	}
 
 	pub notes (self) => [1..35] ScaleDegree {
-		return self.scale_degrees.map(scale_degree => Note::from_relative(root: self.root, scale_degree: scale_degree));		
+		return self.scale_degrees.map(scale_degree => root.get_neighbour(scale_degree));		
 	}
 }
