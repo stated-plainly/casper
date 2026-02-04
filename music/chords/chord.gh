@@ -1,0 +1,28 @@
+import DiatonicNote from @path(root/music/notes);
+import Note from @path(root/music/notes);
+
+import ScaleDegree from @path(root/music/scale_degrees);
+
+export template Chord (
+	name : text,
+	root : DiatonicNote,
+	scale_degrees : [1..35] ScaleDegree, -- [bb, b, , #, ##] (5) x [C, D, E, F, G, A, B] (7) = 5 x 7 = 35
+) {
+	data {
+		name,
+		root,
+		scale_degrees,
+	}
+
+	pub name (self) => text {
+		return ({self.root.name} {self.name});
+	}
+
+	pub formula (self) => [1..35] ScaleDegree {
+		return self.scale_degrees;
+	}
+
+	pub notes (self) => [1..35] ScaleDegree {
+		return self.scale_degrees.map(scale_degree => Note::from_relative(root: self.root, scale_degree: scale_degree));		
+	}
+}
