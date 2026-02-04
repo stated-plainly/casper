@@ -1,0 +1,1 @@
+raise Chord from @path(self/chord);
