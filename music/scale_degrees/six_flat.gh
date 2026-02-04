@@ -1,0 +1,3 @@
+import ScaleDegree from @path(scale_degree.gh);
+
+export type SixFlat : ScaleDegree(name: (6b), half_steps_above_root: (8));
