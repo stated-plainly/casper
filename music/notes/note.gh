@@ -1,0 +1,11 @@
+export template Note (
+	name : text,
+) {
+	data {
+		name,
+	}
+
+	pub name (self) => text {
+		return self.name;
+	}
+}
