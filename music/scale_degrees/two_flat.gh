@@ -1,0 +1,3 @@
+import ScaleDegree from @path(scale_degree.gh);
+
+export type TwoFlat : ScaleDegree(name: (2b), half_steps_above_root: (1));
