@@ -7,23 +7,23 @@ export template ScaleDegree (
 		half_steps_above_root,
 	}
 
-	pub name(self) => text {
+	pub name (self) => text {
 		return self.name;
 	}
 
-	pub half_steps_above_root(self) => int(0..11) {
+	pub half_steps_above_root (self) => int(0..11) {
 		return self.half_steps_above_root;
 	}
 
-	pub half_steps_below_root(self) => int(0..11) {
+	pub half_steps_below_root (self) => int(0..11) {
 		return 12 - self.half_steps_above_root();
 	}
 
-	pub whole_steps_above_root(self) => float(0..5.5) {
+	pub whole_steps_above_root (self) => float(0..5.5) {
 		return self.in_half_steps() / 2;
 	}
 
-	pub whole_steps_below_root(self) => float(0..5.5) {
+	pub whole_steps_below_root (self) => float(0..5.5) {
 		return self.half_steps_below_root() / 2;
 	}
 }
