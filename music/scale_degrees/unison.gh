@@ -1,3 +1,0 @@
-import ScaleDegree @from(path: (scale_degree.gh));
-
-export type Unison : ScaleDegree(name: (Unison), half_steps: (0));
