@@ -1,11 +1,13 @@
-export template Note (
-	name : text,
-) {
+export template Note {
 	data {
-		name,
+		name : text,
 	}
 
-	pub name (self) => text {
+	constructor (name : text) {
+		self.name = name;
+	}
+
+	pub name () => text {
 		return self.name;
 	}
 }
