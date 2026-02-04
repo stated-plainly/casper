@@ -1,0 +1,3 @@
+import ScaleDegree from @path(scale_degree.gh);
+
+export type Two : ScaleDegree(name: (2), half_steps_above_root: (2));
