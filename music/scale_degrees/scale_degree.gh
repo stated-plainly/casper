@@ -1,0 +1,21 @@
+export template ScaleDegree (
+	name : text,
+	half_steps : int(0..12),
+) {
+	data {
+		name,
+		half_steps,
+	}
+
+	pub name(self) => text {
+		return self.name;
+	}
+
+	pub in_half_steps(self) => int(0..12) {
+		return self.half_steps;
+	}
+
+	pub in_whole_steps(self) => float(0..6) {
+		return self.in_half_steps() / 2;
+	}
+}
