@@ -5,7 +5,7 @@ export enum NoteModifier (
 	[s],
 	[ss],
 ) {
-	pub name () => text {
+	pub display_name () => text {
 		match self {
 			[bb] {
 				return (𝄫);
@@ -21,6 +21,26 @@ export enum NoteModifier (
 			}
 			[ss] {
 				return (𝄪);
+			}
+		}
+	}
+
+	pub keyboard_friendly_name () => text {
+		match self {
+			[bb] {
+				return (bb);
+			}
+			[b] {
+				return (b);
+			}
+			[] {
+				return ();
+			}
+			[s] {
+				return (s);
+			}
+			[ss] {
+				return (ss);
 			}
 		}
 	}

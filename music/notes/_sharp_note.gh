@@ -3,8 +3,8 @@ import DiatonicNote from @path(parent/_diatonic_note);
 import NoteLetter from @path(root/shared);
 import NoteModifier from @path(root/shared);
 
-export template class SharpNote : DiatonicNote {
-	constructor (note_letter : NoteLetter) {
-		super({note_letter.name()}{NoteModifier[s].name()});
+export class template SharpNote : DiatonicNote {
+	constructor (letter : NoteLetter) {
+		super(letter, [s]);
 	}
 }

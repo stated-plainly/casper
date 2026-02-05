@@ -1,13 +1,22 @@
+import NoteLetter from @path(root/shared);
+import NoteModifier from @path(root/shared);
+
 export class template Note {
 	data {
-		name : text,
+		in:res letter : NoteLetter,
+		in:res modifier : NoteModifier,
 	}
 
-	constructor (name : text) {
-		self.name = name;
+	constructor (letter : NoteLetter, modifier : NoteModifier) {
+		self.letter = letter;
+		self.modifier = modifier;
 	}
 
-	pub name () => text {
-		return self.name;
+	pub display_name () => text {
+		return ({self.letter.display_name()}{self.modifier.display_name()});
+	}
+
+	pub keyboard_friendly_name () => text {
+		return ({self.letter.keyboard_friendly_name()}{self.modifier.keyboard_friendly_name()});
 	}
 }

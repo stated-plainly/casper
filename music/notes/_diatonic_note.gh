@@ -1,5 +1,8 @@
+import NoteLetter from @path(root/shared);
+import NoteModifier from @path(root/shared);
+
 export class template DiatonicNote : Note {
-	constructor (name : text) {
-		super(name);
+	constructor (letter : NoteLetter, modifier : NoteModifier) {
+		super(letter, modifier);
 	}
 }

@@ -3,8 +3,8 @@ import Note from @path(parent/_note);
 import NoteLetter from @path(root/shared);
 import NoteModifier from @path(root/shared);
 
-export template class DoubleFlatNote : Note {
-	constructor (note_letter : NoteLetter) {
-		super({note_letter.name()}{NoteModifier[bb].name()});
+export class template DoubleFlatNote : Note {
+	constructor (letter : NoteLetter) {
+		super(letter, [bb]);
 	}
 }
