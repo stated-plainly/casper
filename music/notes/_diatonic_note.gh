@@ -1,5 +1,11 @@
 import Note from @path(parent/_note);
 
+import DoubleFlatNote from @path(parent/double_flat_note);
+import FlatNote from @path(parent/flat_note);
+import NaturalNote from @path(parent/natural_note);
+import SharpNote from @path(parent/sharp_note);
+import DoubleSharpNote from @path(parent/double_sharp_note);
+
 import NoteLetter from @path(root/shared);
 import NoteModifier from @path(root/shared);
 
@@ -8,7 +14,37 @@ export template class DiatonicNote : Note {
 		super(letter, modifier);
 	}
 
-	template pub flatten () => Note;
+	pub flatten () => Note {
+		match self.modifier {
+			[b] {
+				return new DoubleFlatNote(self.letter);
+			}
+			[] {
+				return new FlatNote(self.letter);
+			}
+			[s] {
+				return new SharpNote(self.letter);
+			}
+			_ {
+				@die(DiatonicNote should only have the sub-classes of FlatNote, NaturalNote, and SharpNote. Therefore, this line of code should never execute.);
+			}
+		}
+	}
 
-	template pub sharpen () => Note;
+	pub sharpen () => Note {
+		match self.modifier {
+			[b] {
+				return new NaturalNote(self.letter);
+			}
+			[] {
+				return new SharpNote(self.letter);
+			}
+			[s] {
+				return new DoubleSharpNote(self.letter);
+			}
+			_ {
+				@die(DiatonicNote should only have the sub-classes of FlatNote, NaturalNote, and SharpNote. Therefore, this line of code should never execute.);
+			}
+		}
+	}
 }
