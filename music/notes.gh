@@ -5,6 +5,6 @@ raise DoubleSharpNote from @path(self/double_sharp_note);
 
 raise DiatonicNote from @path(self/_diatonic_note);
 
-raise FlatNote from @path(self/flat_note);
-raise NaturalNote from @path(self/natural_note);
-raise SharpNote from @path(self/sharp_note);
+raise FlatNote from @path(self/_flat_note);
+raise NaturalNote from @path(self/_natural_note);
+raise SharpNote from @path(self/_sharp_note);
