@@ -1,0 +1,35 @@
+export enum NoteLetter (
+	[c],
+	[d],
+	[e],
+	[f],
+	[g],
+	[a],
+	[b],
+) {
+	pub name () => text {
+		match self {
+			[c] {
+				return (C);
+			}
+			[d] {
+				return (D);
+			}
+			[e] {
+				return (E);
+			}
+			[f] {
+				return (F);
+			}
+			[g] {
+				return (G);
+			}
+			[a] {
+				return (A);
+			}
+			[b] {
+				return (B);
+			}
+		}
+	}
+}

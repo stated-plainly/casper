@@ -1,0 +1,27 @@
+export enum NoteModifier (
+	[bb],
+	[b],
+	[],
+	[s],
+	[ss],
+) {
+	pub name () => text {
+		match self {
+			[bb] {
+				return (𝄫);
+			}
+			[b] {
+				return (♭);
+			}
+			[] {
+				return (♮);
+			}
+			[s] {
+				return (♯);
+			}
+			[ss] {
+				return (𝄪);
+			}
+		}
+	}
+}
