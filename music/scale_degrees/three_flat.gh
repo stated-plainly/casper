@@ -1,3 +1,7 @@
 import ScaleDegree from @path(parent/scale_degree);
 
-export type ThreeFlat : ScaleDegree(name: (3b), half_steps_above_root: (3));
+export class ThreeFlat : ScaleDegree {
+	constructor () {
+		super((3b), (3));
+	}
+}

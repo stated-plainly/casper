@@ -1,5 +1,4 @@
 raise Note from @path(self/note);
-
 raise DiatonicNote from @path(self/diatonic_note);
 
 raise DoubleFlatNote from @path(self/double_flat_note);

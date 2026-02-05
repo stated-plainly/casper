@@ -1,5 +1,5 @@
-export template DiatonicNote : Note {
+export class template DiatonicNote : Note {
 	constructor (name : text) {
-		template(name);
+		super(name);
 	}
 }

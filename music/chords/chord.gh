@@ -3,7 +3,7 @@ import Note from @path(root/music/notes);
 
 import ScaleDegree from @path(root/music/scale_degrees);
 
-export template Chord {
+export class template Chord {
 	data {
 		name : text,
 		root : DiatonicNote,

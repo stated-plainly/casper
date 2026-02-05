@@ -1,3 +1,7 @@
 import ScaleDegree from @path(parent/scale_degree);
 
-export type TwoFlat : ScaleDegree(name: (2b), half_steps_above_root: (1));
+export class TwoFlat : ScaleDegree {
+	constructor () {
+		super((2b), (1));
+	}
+}

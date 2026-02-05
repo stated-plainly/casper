@@ -1,4 +1,4 @@
-export template ScaleDegree {
+export class template ScaleDegree {
 	data {
 		name : text,
 		half_steps_above_root : int(0..11),

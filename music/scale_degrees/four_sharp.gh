@@ -1,3 +1,7 @@
 import ScaleDegree from @path(parent/scale_degree);
 
-export type FourSharp : ScaleDegree(name: (4#), half_steps_above_root: (6));
+export class FourSharp : ScaleDegree {
+	constructor () {
+		super((4#), (6));
+	}
+}

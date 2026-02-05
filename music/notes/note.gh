@@ -1,4 +1,4 @@
-export template Note {
+export class template Note {
 	data {
 		name : text,
 	}

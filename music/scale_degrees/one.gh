@@ -1,3 +1,7 @@
 import ScaleDegree from @path(parent/scale_degree);
 
-export type One : ScaleDegree(name: (1), half_steps_above_root: (0));
+export class One : ScaleDegree {
+	constructor () {
+		super((1), (0));
+	}
+}
