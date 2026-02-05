@@ -1,10 +1,10 @@
 import NoteLetter from @path(root/shared);
 import NoteModifier from @path(root/shared);
 
-export class template Note {
+export template class Note {
 	data {
-		in:res letter : NoteLetter,
-		in:res modifier : NoteModifier,
+		letter : NoteLetter,
+		modifier : NoteModifier,
 	}
 
 	constructor (letter : NoteLetter, modifier : NoteModifier) {

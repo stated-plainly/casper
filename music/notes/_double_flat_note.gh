@@ -1,10 +1,14 @@
 import Note from @path(parent/_note);
 
+import FlatNote from @path(parent/_flat_note);
+
 import NoteLetter from @path(root/shared);
 import NoteModifier from @path(root/shared);
 
-export class template DoubleFlatNote : Note {
+export template class DoubleFlatNote : Note {
 	constructor (letter : NoteLetter) {
 		super(letter, [bb]);
 	}
+
+	template pub sharpen () => FlatNote;
 }
