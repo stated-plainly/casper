@@ -1,4 +1,4 @@
-raise ScaleDegree from @path(self/scale_degree);
+raise ScaleDegree from @path(self/_scale_degree);
 
 raise One from @path(self/one);
 raise TwoFlat from @path(self/two_flat);

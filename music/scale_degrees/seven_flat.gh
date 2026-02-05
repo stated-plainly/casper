@@ -1,4 +1,4 @@
-import ScaleDegree from @path(parent/scale_degree);
+import ScaleDegree from @path(parent/_scale_degree);
 
 export class SevenFlat : ScaleDegree {
 	constructor () {
