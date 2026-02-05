@@ -1,0 +1,21 @@
+import DiatonicNote from @path(parent/_diatonic_note);
+
+import NaturalNote from @path(parent/natural_note);
+import DoubleSharpNote from @path(parent/double_sharp_note);
+
+import NoteLetter from @path(root/shared);
+import NoteModifier from @path(root/shared);
+
+export class SharpNote : DiatonicNote {
+	constructor (letter : NoteLetter) {
+		super(letter, [s]);
+	}
+
+	pub flatten () => NaturalNote {
+		return new NaturalNote(self.letter);
+	}
+
+	pub sharpen () => DoubleSharpNote {
+		return new DoubleSharpNote(self.letter);
+	}
+}
