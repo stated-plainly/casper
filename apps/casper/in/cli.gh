@@ -16,12 +16,14 @@ if (args.length == (0)) {
 	commands = words.commands;
 	build = words.build;
 
-	System.die(
+	Console.log(
 		{casper}
 
 		{commands}:
 		- {build} -> Tries to build your {casper} app
 	);
+
+	Program.end();
 }
 
 command = args[1];
@@ -31,7 +33,9 @@ match command {
 		if (args.length != (1)) {
 			build = words.build;
 
-			System.die(The {build} command doesn't take any arguments);
+			Console.log(The {build} command doesn't take any arguments);
+
+			Program.end();
 		}
 
 		build();
@@ -42,11 +46,13 @@ match command {
 		build = words.build;
 		command = `"{command}"`.colour(colours.error);
 
-		System.die(
+		Console.log(
 			{command} is not a valid {casper} command
 			
 			{commands}:
 			- {build} -> Tries to build your {casper} app
 		);
+
+		Program.end();
 	}
 }
