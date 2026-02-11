@@ -1,0 +1,10 @@
+import inter_lang::InterLang;
+import casper::Casper;
+
+pub build () {
+	path = text(config.ilt);
+
+	config = InterLang.from_path(path);
+
+	Casper.build(config);
+}

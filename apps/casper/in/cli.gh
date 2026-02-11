@@ -1,5 +1,5 @@
-use commands.build;
-use theming.cli;
+use commands::build;
+use theming::cli;
 
 args = System.args;
 
