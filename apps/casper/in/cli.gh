@@ -1,0 +1,46 @@
+use commands.build;
+use theming.cli;
+
+args = System.args;
+
+colours = cli.colours;
+
+words = object(
+	casper: text(casper).colour(colours.primary),
+	commands: text(Commands).colour(colours.heading),
+	build: text(build).colour(colours.secondary),
+);
+
+if (args.length == (0)) {
+	casper = words.casper;
+	commands = words.commands;
+	build = words.build;
+
+	System.die(
+		{casper}
+
+		{commands}:
+		- {build} -> Tries to build your {casper} app
+	);
+}
+
+command = args[1];
+
+match command {
+	(build) {
+		build();
+	}
+	_ {
+		casper = words.casper;
+		commands = words.commands;
+		build = words.build;
+		command = `"{command}"`.colour(colours.error);
+
+		System.die(
+			{command} is not a valid {casper} command
+			
+			{commands}:
+			- {build} -> Tries to build your {casper} app
+		);
+	}
+}
