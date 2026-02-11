@@ -28,6 +28,12 @@ command = args[1];
 
 match command {
 	(build) {
+		if (args.length != (1)) {
+			build = words.build;
+
+			System.die(The {build} command doesn't take any arguments);
+		}
+
 		build();
 	}
 	_ {
