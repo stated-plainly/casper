@@ -1,7 +1,7 @@
 use commands::build;
 use theming::cli;
 
-args = System.args;
+args = Entry.args;
 
 colours = cli.colours;
 
