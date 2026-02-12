@@ -1,2 +1,3 @@
 name: (hello_world)
-entry_point: (hello_world)
+entry: (hello_world)
+type: (app)
