@@ -1,2 +1,0 @@
-raise NoteLetter from @path(self/note_letter);
-raise NoteModifier from @path(self/note_modifier);
