@@ -1,0 +1,1062 @@
+imports: {
+	constructor: {
+		local: (^libs/traits/constructor)
+	}
+	instantiation_error: {
+		local: (^libs/errors/instantiation_error)
+	}
+	keyboard_friendly_name: {
+		local (^libs/traits/keyboard_friendly_name)
+	}
+	log: {
+		local (^libs/traits/log)
+	}
+	letter: {
+		local: (^music/enums/letter)
+	}
+	modifier: {
+		local: (^music/enums/modifier)
+	}
+	scale_degree: {
+		local: (^music/enums/scale_degree)
+	}
+}
+
+---
+
+import constructor::Constructor;
+import instantiation_error::InstantiationError;
+import keyboard_friendly_name::KeyboardFriendlyName;
+import log::Log;
+import letter::Letter;
+import modifier::Modifier;
+import scale_degree::ScaleDegree;
+
+export struct Note {
+	letter : Letter,
+	modifier : Modifier,
+	scale_degree : ScaleDegree,
+}
+
+impl Note {
+	letter (ref self : Self) => Letter {
+		return self.letter;
+	}
+
+	modifier (ref self : Self) => Modifier {
+		return self.modifier;
+	}
+
+	scale_degree (ref self : Self) => ScaleDegree {
+		return self.scale_degree;
+	}
+
+	new_one (letter : Letter, modifier : Modifier) => Self | InstantiationError {
+		scale_degree : ScaleDegree = [1];
+
+		match (letter, modifier) {
+			-- F
+			([F], [b]),
+			([F], []),
+			([F], [s]),
+			-- C
+			([C], [b]),
+			([C], []),
+			([C], [s]),
+			-- G
+			([G], [b]),
+			([G], []),
+			([G], [s]),
+			-- D
+			([D], [b]),
+			([D], []),
+			([D], [s]),
+			-- A
+			([A], [b]),
+			([A], []),
+			([A], [s]),
+			-- E
+			([E], [b]),
+			([E], []),
+			([E], [s]),
+			-- B
+			([B], [b]),
+			([B], []),
+			([B], [s]) {
+				return Self {
+					letter,
+					modifier,
+					scale_degree,
+				};
+			}
+			_ {
+				return InstantiationError('{letter}{modifier}' is not a diatonic {scale_degree} note);
+			}
+		} 
+	}
+
+	new_two_flat (letter : Letter, modifier : Modifier) => Self | InstantiationError {
+		scale_degree : ScaleDegree = [2b];
+
+		match (letter, modifier) {
+			-- G
+			([G], [bb]),
+			([G], [b]),
+			([G], []),
+			-- D
+			([D], [bb]),
+			([D], [b]),
+			([D], []),
+			-- A
+			([A], [bb]),
+			([A], [b]),
+			([A], []),
+			-- E
+			([E], [bb]),
+			([E], [b]),
+			([E], []),
+			-- B
+			([B], [bb]),
+			([B], [b]),
+			([B], []),
+			-- F
+			([F], [b]),
+			([F], []),
+			([F], [s]),
+			-- C
+			([C], [b]),
+			([C], []),
+			([C], [s]) {
+				return Self {
+					letter,
+					modifier,
+					scale_degree,
+				};
+			}
+			_ {
+				return InstantiationError('{letter}{modifier}' is not a diatonic {scale_degree} note);
+			}
+		} 
+	}
+
+	new_two (letter : Letter, modifier : Modifier) => Self | InstantiationError {
+		scale_degree : ScaleDegree = [2];
+
+		match (letter, modifier) {
+			-- G
+			([G], [b]),
+			([G], []),
+			([G], [s]),
+			-- D
+			([D], [b]),
+			([D], []),
+			([D], [s]),
+			-- A
+			([A], [b]),
+			([A], []),
+			([A], [s]),
+			-- E
+			([E], [b]),
+			([E], []),
+			([E], [s]),
+			-- B
+			([B], [b]),
+			([B], []),
+			([B], [s]),
+			-- F
+			([F], []),
+			([F], [s]),
+			([F], [ss]),
+			-- C
+			([C], []),
+			([C], [s]),
+			([C], [ss]) {
+				return Self {
+					letter,
+					modifier,
+					scale_degree,
+				};
+			}
+			_ {
+				return InstantiationError('{letter}{modifier}' is not a diatonic {scale_degree} note);
+			}
+		} 
+	}
+
+	new_three_flat (letter : Letter, modifier : Modifier) => Self | InstantiationError {
+		scale_degree : ScaleDegree = [3b];
+
+		match (letter, modifier) {
+			-- A
+			([A], [bb]),
+			([A], [b]),
+			([A], []),
+			-- E
+			([E], [bb]),
+			([E], [b]),
+			([E], []),
+			-- B
+			([B], [bb]),
+			([B], [b]),
+			([B], []),
+			-- F
+			([F], [b]),
+			([F], []),
+			([F], [s]),
+			-- C
+			([C], [b]),
+			([C], []),
+			([C], [s]),
+			-- G
+			([G], [b]),
+			([G], []),
+			([G], [s]),
+			-- D
+			([D], [b]),
+			([D], []),
+			([D], [s]) {
+				return Self {
+					letter,
+					modifier,
+					scale_degree,
+				};
+			}
+			_ {
+				return InstantiationError('{letter}{modifier}' is not a diatonic {scale_degree} note);
+			}
+		} 
+	}
+
+	new_three (letter : Letter, modifier : Modifier) => Self | InstantiationError {
+		scale_degree : ScaleDegree = [3];
+
+		match (letter, modifier) {
+			-- A
+			([A], [b]),
+			([A], []),
+			([A], [s]),
+			-- E
+			([E], [b]),
+			([E], []),
+			([E], [s]),
+			-- B
+			([B], [b]),
+			([B], []),
+			([B], [s]),
+			-- F
+			([F], []),
+			([F], [s]),
+			([F], [ss]),
+			-- C
+			([C], []),
+			([C], [s]),
+			([C], [ss]),
+			-- G
+			([G], []),
+			([G], [s]),
+			([G], [ss]),
+			-- D
+			([D], []),
+			([D], [s]),
+			([D], [ss]) {
+				return Self {
+					letter,
+					modifier,
+					scale_degree,
+				};
+			}
+			_ {
+				return InstantiationError('{letter}{modifier}' is not a diatonic {scale_degree} note);
+			}
+		} 
+	}
+
+	new_four (letter : Letter, modifier : Modifier) => Self | InstantiationError {
+		scale_degree : ScaleDegree = [4];
+
+		match (letter, modifier) {
+			-- B
+			([B], [bb]),
+			([B], [b]),
+			([B], []),
+			-- F
+			([F], [b]),
+			([F], []),
+			([F], [s]),
+			-- C
+			([C], [b]),
+			([C], []),
+			([C], [s]),
+			-- G
+			([G], [b]),
+			([G], []),
+			([G], [s]),
+			-- D
+			([D], [b]),
+			([D], []),
+			([D], [s]),
+			-- A
+			([A], [b]),
+			([A], []),
+			([A], [s]),
+			-- E
+			([E], [b]),
+			([E], []),
+			([E], [s]) {
+				return Self {
+					letter,
+					modifier,
+					scale_degree,
+				};
+			}
+			_ {
+				return InstantiationError('{letter}{modifier}' is not a diatonic {scale_degree} note);
+			}
+		} 
+	}
+
+	new_four_sharp (letter : Letter, modifier : Modifier) => Self | InstantiationError {
+		scale_degree : ScaleDegree = [4s];
+
+		match (letter, modifier) {
+			-- B
+			([B], [b]),
+			([B], []),
+			([B], [s]),
+			-- F
+			([F], []),
+			([F], [s]),
+			([F], [ss]),
+			-- C
+			([C], []),
+			([C], [s]),
+			([C], [ss]),
+			-- G
+			([G], []),
+			([G], [s]),
+			([G], [ss]),
+			-- D
+			([D], []),
+			([D], [s]),
+			([D], [ss]),
+			-- A
+			([A], []),
+			([A], [s]),
+			([A], [ss]),
+			-- E
+			([E], []),
+			([E], [s]),
+			([E], [ss]) {
+				return Self {
+					letter,
+					modifier,
+					scale_degree,
+				};
+			}
+			_ {
+				return InstantiationError('{letter}{modifier}' is not a diatonic {scale_degree} note);
+			}
+		} 
+	}
+
+	new_five_flat (letter : Letter, modifier : Modifier) => Self | InstantiationError {
+		scale_degree : ScaleDegree = [5b];
+
+		match (letter, modifier) {
+			-- C
+			([C], [bb]),
+			([C], [b]),
+			([C], []),
+			-- G
+			([G], [bb]),
+			([G], [b]),
+			([G], []),
+			-- D
+			([D], [bb]),
+			([D], [b]),
+			([D], []),
+			-- A
+			([A], [bb]),
+			([A], [b]),
+			([A], []),
+			-- E
+			([E], [bb]),
+			([E], [b]),
+			([E], []),
+			-- B
+			([B], [bb]),
+			([B], [b]),
+			([B], []),
+			-- F
+			([F], [b]),
+			([F], []),
+			([F], [s]) {
+				return Self {
+					letter,
+					modifier,
+					scale_degree,
+				};
+			}
+			_ {
+				return InstantiationError('{letter}{modifier}' is not a diatonic {scale_degree} note);
+			}
+		} 
+	}
+
+	new_five (letter : Letter, modifier : Modifier) => Self | InstantiationError {
+		scale_degree : ScaleDegree = [5];
+
+		match (letter, modifier) {
+			-- C
+			([C], [b]),
+			([C], []),
+			([C], [s]),
+			-- G
+			([G], [b]),
+			([G], []),
+			([G], [s]),
+			-- D
+			([D], [b]),
+			([D], []),
+			([D], [s]),
+			-- A
+			([A], [b]),
+			([A], []),
+			([A], [s]),
+			-- E
+			([E], [b]),
+			([E], []),
+			([E], [s]),
+			-- B
+			([B], [b]),
+			([B], []),
+			([B], [s]),
+			-- F
+			([F], []),
+			([F], [s]),
+			([F], [ss]) {
+				return Self {
+					letter,
+					modifier,
+					scale_degree,
+				};
+			}
+			_ {
+				return InstantiationError('{letter}{modifier}' is not a diatonic {scale_degree} note);
+			}
+		} 
+	}
+
+	new_five_sharp (letter : Letter, modifier : Modifier) => Self | InstantiationError {
+		scale_degree : ScaleDegree = [5s];
+
+		match (letter, modifier) {
+			-- C
+			([C], []),
+			([C], [s]),
+			([C], [ss]),
+			-- G
+			([G], []),
+			([G], [s]),
+			([G], [ss]),
+			-- D
+			([D], []),
+			([D], [s]),
+			([D], [ss]),
+			-- A
+			([A], []),
+			([A], [s]),
+			([A], [ss]),
+			-- E
+			([E], []),
+			([E], [s]),
+			([E], [ss]),
+			-- B
+			([B], []),
+			([B], [s]),
+			([B], [ss]),
+			-- F
+			([F], [s]),
+			([F], [ss]),
+			([F], [sss]) {
+				return Self {
+					letter,
+					modifier,
+					scale_degree,
+				};
+			}
+			_ {
+				return InstantiationError('{letter}{modifier}' is not a diatonic {scale_degree} note);
+			}
+		} 
+	}
+
+	new_six_flat (letter : Letter, modifier : Modifier) => Self | InstantiationError {
+		scale_degree : ScaleDegree = [6b];
+
+		match (letter, modifier) {
+			-- D
+			([D], [bb]),
+			([D], [b]),
+			([D], []),
+			-- A
+			([A], [bb]),
+			([A], [b]),
+			([A], []),
+			-- E
+			([E], [bb]),
+			([E], [b]),
+			([E], []),
+			-- B
+			([B], [bb]),
+			([B], [b]),
+			([B], []),
+			-- F
+			([F], [b]),
+			([F], []),
+			([F], [s]),
+			-- C
+			([C], [b]),
+			([C], []),
+			([C], [s]),
+			-- G
+			([G], [b]),
+			([G], []),
+			([G], [s]) {
+				return Self {
+					letter,
+					modifier,
+					scale_degree,
+				};
+			}
+			_ {
+				return InstantiationError('{letter}{modifier}' is not a diatonic {scale_degree} note);
+			}
+		} 
+	}
+
+	new_six (letter : Letter, modifier : Modifier) => Self | InstantiationError {
+		scale_degree : ScaleDegree = [6];
+
+		match (letter, modifier) {
+			-- D
+			([D], [b]),
+			([D], []),
+			([D], [s]),
+			-- A
+			([A], [b]),
+			([A], []),
+			([A], [s]),
+			-- E
+			([E], [b]),
+			([E], []),
+			([E], [s]),
+			-- B
+			([B], [b]),
+			([B], []),
+			([B], [s]),
+			-- F
+			([F], []),
+			([F], [s]),
+			([F], [ss]),
+			-- C
+			([C], []),
+			([C], [s]),
+			([C], [ss]),
+			-- G
+			([G], []),
+			([G], [s]),
+			([G], [ss]) {
+				return Self {
+					letter,
+					modifier,
+					scale_degree,
+				};
+			}
+			_ {
+				return InstantiationError('{letter}{modifier}' is not a diatonic {scale_degree} note);
+			}
+		} 
+	}
+
+	new_seven_flat (letter : Letter, modifier : Modifier) => Self | InstantiationError {
+		scale_degree : ScaleDegree = [7b];
+
+		match (letter, modifier) {
+			-- E
+			([E], [bb]),
+			([E], [b]),
+			([E], []),
+			-- B
+			([B], [bb]),
+			([B], [b]),
+			([B], []),
+			-- F
+			([F], [b]),
+			([F], []),
+			([F], [s]),
+			-- C
+			([C], [bb]),
+			([C], [b]),
+			([C], []),
+			-- G
+			([G], [b]),
+			([G], []),
+			([G], [s]),
+			-- D
+			([D], [b]),
+			([D], []),
+			([D], [s]),
+			-- A
+			([A], [b]),
+			([A], []),
+			([A], [s]) {
+				return Self {
+					letter,
+					modifier,
+					scale_degree,
+				};
+			}
+			_ {
+				return InstantiationError('{letter}{modifier}' is not a diatonic {scale_degree} note);
+			}
+		} 
+	}
+
+	new_seven (letter : Letter, modifier : Modifier) => Self | InstantiationError {
+		scale_degree : ScaleDegree = [7];
+
+		match (letter, modifier) {
+			-- E
+			([E], [b]),
+			([E], []),
+			([E], [s]),
+			-- B
+			([B], [b]),
+			([B], []),
+			([B], [s]),
+			-- F
+			([F], []),
+			([F], [s]),
+			([F], [ss]),
+			-- C
+			([C], [b]),
+			([C], []),
+			([C], [s]),
+			-- G
+			([G], []),
+			([G], [s]),
+			([G], [ss]),
+			-- D
+			([D], []),
+			([D], [s]),
+			([D], [ss]),
+			-- A
+			([A], []),
+			([A], [s]),
+			([A], [ss]) {
+				return Self {
+					letter,
+					modifier,
+					scale_degree,
+				};
+			}
+			_ {
+				return InstantiationError('{letter}{modifier}' is not a diatonic {scale_degree} note);
+			}
+		} 
+	}
+
+	new_nine_flat (letter : Letter, modifier : Modifier) => Self | InstantiationError {
+		scale_degree : ScaleDegree = [9b];
+
+		match (letter, modifier) {
+			-- G
+			([G], [bb]),
+			([G], [b]),
+			([G], []),
+			-- D
+			([D], [bb]),
+			([D], [b]),
+			([D], []),
+			-- A
+			([A], [bb]),
+			([A], [b]),
+			([A], []),
+			-- E
+			([E], [bb]),
+			([E], [b]),
+			([E], []),
+			-- B
+			([B], [bb]),
+			([B], [b]),
+			([B], []),
+			-- F
+			([F], [b]),
+			([F], []),
+			([F], [s]),
+			-- C
+			([C], [b]),
+			([C], []),
+			([C], [s]) {
+				return Self {
+					letter,
+					modifier,
+					scale_degree,
+				};
+			}
+			_ {
+				return InstantiationError('{letter}{modifier}' is not a diatonic {scale_degree} note);
+			}
+		} 
+	}
+
+	new_nine (letter : Letter, modifier : Modifier) => Self | InstantiationError {
+		scale_degree : ScaleDegree = [9];
+
+		match (letter, modifier) {
+			-- G
+			([G], [b]),
+			([G], []),
+			([G], [s]),
+			-- D
+			([D], [b]),
+			([D], []),
+			([D], [s]),
+			-- A
+			([A], [b]),
+			([A], []),
+			([A], [s]),
+			-- E
+			([E], [b]),
+			([E], []),
+			([E], [s]),
+			-- B
+			([B], [b]),
+			([B], []),
+			([B], [s]),
+			-- F
+			([F], []),
+			([F], [s]),
+			([F], [ss]),
+			-- C
+			([C], []),
+			([C], [s]),
+			([C], [ss]) {
+				return Self {
+					letter,
+					modifier,
+					scale_degree,
+				};
+			}
+			_ {
+				return InstantiationError('{letter}{modifier}' is not a diatonic {scale_degree} note);
+			}
+		} 
+	}
+
+	new_nine_sharp (letter : Letter, modifier : Modifier) => Self | InstantiationError {
+		scale_degree : ScaleDegree = [9s];
+
+		match (letter, modifier) {
+			-- G
+			([G], []),
+			([G], [s]),
+			([G], [ss]),
+			-- D
+			([D], []),
+			([D], [s]),
+			([D], [ss]),
+			-- A
+			([A], []),
+			([A], [s]),
+			([A], [ss]),
+			-- E
+			([E], []),
+			([E], [s]),
+			([E], [ss]),
+			-- B
+			([B], []),
+			([B], [s]),
+			([B], [ss]),
+			-- F
+			([F], [s]),
+			([F], [ss]),
+			([F], [sss]),
+			-- C
+			([C], [s]),
+			([C], [ss]),
+			([C], [sss]) {
+				return Self {
+					letter,
+					modifier,
+					scale_degree,
+				};
+			}
+			_ {
+				return InstantiationError('{letter}{modifier}' is not a diatonic {scale_degree} note);
+			}
+		} 
+	}
+
+	new_eleven (letter : Letter, modifier : Modifier) => Self | InstantiationError {
+		scale_degree : ScaleDegree = [11];
+
+		match (letter, modifier) {
+			-- B
+			([B], [bb]),
+			([B], [b]),
+			([B], []),
+			-- F
+			([F], [b]),
+			([F], []),
+			([F], [s]),
+			-- C
+			([C], [b]),
+			([C], []),
+			([C], [s]),
+			-- G
+			([G], [b]),
+			([G], []),
+			([G], [s]),
+			-- D
+			([D], [b]),
+			([D], []),
+			([D], [s]),
+			-- A
+			([A], [b]),
+			([A], []),
+			([A], [s]),
+			-- E
+			([E], [b]),
+			([E], []),
+			([E], [s]) {
+				return Self {
+					letter,
+					modifier,
+					scale_degree,
+				};
+			}
+			_ {
+				return InstantiationError('{letter}{modifier}' is not a diatonic {scale_degree} note);
+			}
+		} 
+	}
+
+	new_eleven_sharp (letter : Letter, modifier : Modifier) => Self | InstantiationError {
+		scale_degree : ScaleDegree = [11s];
+
+		match (letter, modifier) {
+			-- B
+			([B], [b]),
+			([B], []),
+			([B], [s]),
+			-- F
+			([F], []),
+			([F], [s]),
+			([F], [ss]),
+			-- C
+			([C], []),
+			([C], [s]),
+			([C], [ss]),
+			-- G
+			([G], []),
+			([G], [s]),
+			([G], [ss]),
+			-- D
+			([D], []),
+			([D], [s]),
+			([D], [ss]),
+			-- A
+			([A], []),
+			([A], [s]),
+			([A], [ss]),
+			-- E
+			([E], []),
+			([E], [s]),
+			([E], [ss]) {
+				return Self {
+					letter,
+					modifier,
+					scale_degree,
+				};
+			}
+			_ {
+				return InstantiationError('{letter}{modifier}' is not a diatonic {scale_degree} note);
+			}
+		} 
+	}
+
+	new_thirteen_flat (letter : Letter, modifier : Modifier) => Self | InstantiationError {
+		scale_degree : ScaleDegree = [13b];
+
+		match (letter, modifier) {
+			-- D
+			([D], [bb]),
+			([D], [b]),
+			([D], []),
+			-- A
+			([A], [bb]),
+			([A], [b]),
+			([A], []),
+			-- E
+			([E], [bb]),
+			([E], [b]),
+			([E], []),
+			-- B
+			([B], [bb]),
+			([B], [b]),
+			([B], []),
+			-- F
+			([F], [b]),
+			([F], []),
+			([F], [s]),
+			-- C
+			([F], [b]),
+			([F], []),
+			([F], [s]),
+			-- G
+			([B], [b]),
+			([B], []),
+			([B], [s]) {
+				return Self {
+					letter,
+					modifier,
+					scale_degree,
+				};
+			}
+			_ {
+				return InstantiationError('{letter}{modifier}' is not a diatonic {scale_degree} note);
+			}
+		} 
+	}
+
+	new_thirteen (letter : Letter, modifier : Modifier) => Self | InstantiationError {
+		scale_degree : ScaleDegree = [13];
+
+		match (letter, modifier) {
+			-- D
+			([D], [b]),
+			([D], []),
+			([D], [s]),
+			-- A
+			([A], [b]),
+			([A], []),
+			([A], [s]),
+			-- E
+			([E], [b]),
+			([E], []),
+			([E], [s]),
+			-- B
+			([E], [b]),
+			([E], []),
+			([E], [s]),
+			-- F
+			([F], []),
+			([F], [s]),
+			([F], [ss]),
+			-- C
+			([C], []),
+			([C], [s]),
+			([C], [ss]),
+			-- G
+			([G], []),
+			([G], [s]),
+			([G], [ss]) {
+				return Self {
+					letter,
+					modifier,
+					scale_degree,
+				};
+			}
+			_ {
+				return InstantiationError('{letter}{modifier}' is not a diatonic {scale_degree} note);
+			}
+		} 
+	}
+}
+
+impl Constructor for Note {
+	pub new (letter : Letter, modifier : Modifier, scale_degree : ScaleDegree) => Self | InstantiationError {
+		match scale_degree {
+			[1] {
+				return Self.new_one(letter, modifier);
+			}
+			[2b] {
+				return Self.new_two_flat(letter, modifier);
+			}
+			[2] {
+				return Self.new_two(letter, modifier);
+			}
+			[3b] {
+				return Self.new_three_flat(letter, modifier);
+			}
+			[3] {
+				return Self.new_three(letter, modifier);
+			}
+			[4] {
+				return Self.new_four(letter, modifier);
+			}
+			[4s] {
+				return Self.new_four_sharp(letter, modifier);
+			}
+			[5b] {
+				return Self.new_five_flat(letter, modifier);
+			}
+			[5] {
+				return Self.new_five(letter, modifier);
+			}
+			[5s] {
+				return Self.new_five_sharp(letter, modifier);
+			}
+			[6b] {
+				return Self.new_six_flat(letter, modifier);
+			}
+			[6] {
+				return Self.new_six(letter, modifier);
+			}
+			[7b] {
+				return Self.new_seven_flat(letter, modifier);
+			}
+			[7] {
+				return Self.new_seven(letter, modifier);
+			}
+			[8] {
+				return Self.new_eight(letter, modifier);
+			}
+			[9b] {
+				return Self.new_nine_flat(letter, modifier);
+			}
+			[9] {
+				return Self.new_nine(letter, modifier);
+			}
+			[9s] {
+				return Self.new_nine_sharp(letter, modifier);
+			}
+			[11] {
+				return Self.new_eleven(letter, modifier);
+			}
+			[11s] {
+				return Self.new_eleven_sharp(letter, modifier);
+			}
+			[13b] {
+				return Self.new_thirteen_flat(letter, modifier);
+			}
+			[13] {
+				return Self.new_thirteen(letter, modifier);
+			}
+		}
+	}
+}
+
+impl KeyboardFriendlyName for Note {
+	keyboard_friendly_name (ref self : Self) => text {
+		text({self.letter.keyboard_friendly_name()}{self.modifier.keyboard_friendly_name()})
+	}
+}
+
+impl Log for Note {
+	log (ref self : Self) => text {
+		text({self.letter}{self.modifier})
+	}
+}

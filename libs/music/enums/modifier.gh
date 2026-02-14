@@ -88,7 +88,7 @@ impl Modifier {
 }
 
 impl KeyboardFriendlyName for Modifier {
-	pub get_keyboard_friendly_name (ref self : Self) => ref text {
+	pub keyboard_friendly_name (ref self : Self) => ref text {
 		return keyboard_friendly_names[self];
 	}
 }
