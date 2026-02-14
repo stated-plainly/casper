@@ -24,95 +24,83 @@ export enum Letter {
 
 impl Letter {
 	pub next (ref self : Self) => Self {
-		next : Self = defer;
-
 		match self {
 			[C] {
-				next = [D];
+				return [D];
 			}
 			[D] {
-				next = [E];
+				return [E];
 			}
 			[E] {
-				next = [F];
+				return [F];
 			}
 			[F] {
-				next = [G];
+				return [G];
 			}
 			[G] {
-				next = [A];
+				return [A];
 			}
 			[A] {
-				next = [B];
+				return [B];
 			}
 			[B] {
-				next = [C];
+				return [C];
 			}
 		}
-
-		return next;
 	}
 
 	pub prev (ref self : Self) => Self {
-		prev : Self = defer;
-
 		match self {
 			[C] {
-				prev = [B];
+				return [B];
 			}
 			[D] {
-				prev = [C];
+				return [C];
 			}
 			[E] {
-				prev = [D];
+				return [D];
 			}
 			[F] {
-				prev = [E];
+				return [E];
 			}
 			[G] {
-				prev = [F];
+				return [F];
 			}
 			[A] {
-				prev = [G];
+				return [G];
 			}
 			[B] {
-				prev = [A];
+				return [A];
 			}
 		}
-
-		return prev;
 	}
 }
 
 impl Log for Letter {
 	pub log (ref self : Self) => text {
-		log_value : text = defer;
-
 		match self {
 			[C] {
-				log_value = (C);
+				return (C);
 			}
 			[D] {
-				log_value = (D);
+				return (D);
 			}
 			[E] {
-				log_value = (E);
+				return (E);
 			}
 			[F] {
-				log_value = (F);
+				return (F);
 			}
 			[G] {
-				log_value = (G);
+				return (G);
 			}
 			[A] {
-				log_value = (A);
+				return (A);
 			}
 			[B] {
-				log_value = (B);
+				return (B);
 			}
 		}
-
-		return log_value;
 	}
 }
 
