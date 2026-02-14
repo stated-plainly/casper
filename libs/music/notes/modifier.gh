@@ -12,7 +12,7 @@ imports: {
 import log::Log;
 import keyboard_friendly_name::KeyboardFriendlyName;
 
-export enum NoteModifier {
+export enum Modifier {
 	[bb],
 	[b],
 	[],
@@ -21,7 +21,7 @@ export enum NoteModifier {
 	[sss],
 }
 
-impl NoteLetter {
+impl Modifier {
 	pub flatten (self : Self) => Self | ImpossibleOperationError {
 		flattened : Self = defer;
 
@@ -77,7 +77,7 @@ impl NoteLetter {
 	}
 }
 
-impl Log for NoteLetter {
+impl Log for Modifier {
 	pub log (self : Self) => text {
 		log_value : text = defer;
 
@@ -106,7 +106,7 @@ impl Log for NoteLetter {
 	}
 }
 
-impl KeyboardFriendlyName for NoteLetter {
+impl KeyboardFriendlyName for Modifier {
 	pub get_keyboard_friendly_name (self : Self) => text {
 		keyboard_friendly_name : text = defer;
 

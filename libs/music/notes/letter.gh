@@ -12,7 +12,7 @@ imports: {
 import log::Log;
 import keyboard_friendly_name::KeyboardFriendlyName;
 
-export enum NoteLetter {
+export enum Letter {
 	[C],
 	[D],
 	[E],
@@ -22,8 +22,8 @@ export enum NoteLetter {
 	[B],
 }
 
-impl NoteLetter {
-	pub next (self : Self) => Self {
+impl Letter {
+	pub next (ref self : Self) => Self {
 		next : Self = defer;
 
 		match self {
@@ -53,7 +53,7 @@ impl NoteLetter {
 		return next;
 	}
 
-	pub prev (self : Self) => Self {
+	pub prev (ref self : Self) => Self {
 		prev : Self = defer;
 
 		match self {
@@ -84,8 +84,8 @@ impl NoteLetter {
 	}
 }
 
-impl Log for NoteLetter {
-	pub log (self : Self) => text {
+impl Log for Letter {
+	pub log (ref self : Self) => text {
 		log_value : text = defer;
 
 		match self {
@@ -116,8 +116,8 @@ impl Log for NoteLetter {
 	}
 }
 
-impl KeyboardFriendlyName for NoteLetter {
-	pub get_keyboard_friendly_name (self : Self) => text {
+impl KeyboardFriendlyName for Letter {
+	pub get_keyboard_friendly_name (ref self : Self) => text {
 		return self.log().to_lower();
 	}
 }
