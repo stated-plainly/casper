@@ -1,0 +1,97 @@
+imports: {
+	keyboard_friendly_name: {
+		local: (^libs/traits/keyboard_friendly_name)
+	}
+	log: {
+		local: (^libs/traits/log)
+	}
+}
+
+---
+
+import keyboard_friendly_name::KeyboardFriendlyName;
+import log::Log;
+
+static keyboard_friendly_names : [_]text = [
+	(1),
+	(2b),
+	(2),
+	(3b),
+	(3),
+	(4),
+	(4s),
+	(5b),
+	(5),
+	(5s),
+	(6b),
+	(6),
+	(7b),
+	(7),
+	(9b),
+	(9),
+	(9s),
+	(11),
+	(11s),
+	(13b),
+	(13),
+];
+
+static log_names : [_]text = [
+	(1),
+	(2♭),
+	(2♮),
+	(3♭),
+	(3),
+	(4),
+	(4♯),
+	(5♭),
+	(5),
+	(5♯),
+	(6♭),
+	(6),
+	(7♭),
+	(7),
+	(9♭),
+	(9),
+	(9♯),
+	(11),
+	(11♯),
+	(13♭),
+	(13),
+];
+
+export enum ScaleDegree {
+	[1],
+	[2b],
+	[2],
+	[3b],
+	[3],
+	[4],
+	[4s],
+	[5b],
+	[5],
+	[5s],
+	[6b],
+	[6],
+	[7b],
+	[7],
+	[9b],
+	[9],
+	[9s],
+	[11],
+	[11s],
+	[13b],
+	[13],
+}
+
+impl KeyboardFriendlyName for ScaleDegree {
+	pub get_keyboard_friendly_name (ref self : Self) => ref text {
+		return keyboard_friendly_name[self];
+	}
+}
+
+impl Log for ScaleDegree {
+	pub log (ref self : Self) => ref text {
+		return log_names[self];
+	}
+}
