@@ -1,0 +1,123 @@
+imports: {
+	log: {
+		local: (^libs/traits/log)
+	}
+	keyboard_friendly_name: {
+		local: (^libs/traits/keyboard_friendly_name)
+	}
+}
+
+---
+
+import log::Log;
+import keyboard_friendly_name::KeyboardFriendlyName;
+
+export enum NoteLetter {
+	[C],
+	[D],
+	[E],
+	[F],
+	[G],
+	[A],
+	[B],
+}
+
+impl NoteLetter {
+	pub next (self : Self) => Self {
+		next : Self = defer;
+
+		match self {
+			[C] {
+				next = [D];
+			}
+			[D] {
+				next = [E];
+			}
+			[E] {
+				next = [F];
+			}
+			[F] {
+				next = [G];
+			}
+			[G] {
+				next = [A];
+			}
+			[A] {
+				next = [B];
+			}
+			[B] {
+				next = [C];
+			}
+		}
+
+		return next;
+	}
+
+	pub prev (self : Self) => Self {
+		prev : Self = defer;
+
+		match self {
+			[C] {
+				prev = [B];
+			}
+			[D] {
+				prev = [C];
+			}
+			[E] {
+				prev = [D];
+			}
+			[F] {
+				prev = [E];
+			}
+			[G] {
+				prev = [F];
+			}
+			[A] {
+				prev = [G];
+			}
+			[B] {
+				prev = [A];
+			}
+		}
+
+		return prev;
+	}
+}
+
+impl Log for NoteLetter {
+	pub log (self : Self) => text {
+		log_value : text = defer;
+
+		match self {
+			[C] {
+				log_value = (C);
+			}
+			[D] {
+				log_value = (D);
+			}
+			[E] {
+				log_value = (E);
+			}
+			[F] {
+				log_value = (F);
+			}
+			[G] {
+				log_value = (G);
+			}
+			[A] {
+				log_value = (A);
+			}
+			[B] {
+				log_value = (B);
+			}
+		}
+
+		return log_value;
+	}
+}
+
+impl KeyboardFriendlyName for NoteLetter {
+	pub get_keyboard_friendly_name (self : Self) => text {
+		return self.log().to_lower();
+	}
+}
