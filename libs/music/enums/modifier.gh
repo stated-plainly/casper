@@ -9,8 +9,26 @@ imports: {
 
 ---
 
-import log::Log;
 import keyboard_friendly_name::KeyboardFriendlyName;
+import log::Log;
+
+static keyboard_friendly_names : [_] text = [
+	(bb),
+	(b),
+	(),
+	(s),
+	(ss),
+	(sss),
+];
+
+static log_names : [_] text = [
+	(𝄫),
+	(♭),
+	(♮),
+	(♯),
+	(𝄪),
+	(♯𝄪),
+];
 
 export enum Modifier {
 	[bb],
@@ -69,52 +87,14 @@ impl Modifier {
 	}
 }
 
-impl Log for Modifier {
-	pub log (self : Self) => text {
-		match self {
-			[bb] {
-				return (𝄫);
-			}
-			[b] {
-				return (♭);
-			}
-			[] {
-				return (♮);
-			}
-			[s] {
-				return (♯);
-			}
-			[ss] {
-				return (𝄪);
-			}
-			[sss] {
-				return (♯𝄪);
-			}
-		}
+impl KeyboardFriendlyName for Modifier {
+	pub get_keyboard_friendly_name (ref self : Self) => ref text {
+		return keyboard_friendly_names[self];
 	}
 }
 
-impl KeyboardFriendlyName for Modifier {
-	pub get_keyboard_friendly_name (self : Self) => text {
-		match self {
-			[bb] {
-				return (bb);
-			}
-			[b] {
-				return (b);
-			}
-			[] {
-				return ();
-			}
-			[s] {
-				return (s);
-			}
-			[ss] {
-				return (ss);
-			}
-			[sss] {
-				return (sss);
-			}
-		}
+impl Log for Modifier {
+	pub log (ref self : Self) => ref text {
+		return log_names[self];
 	}
 }
