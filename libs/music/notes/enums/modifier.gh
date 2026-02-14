@@ -23,114 +23,98 @@ export enum Modifier {
 
 impl Modifier {
 	pub flatten (self : Self) => Self | ImpossibleOperationError {
-		flattened : Self = defer;
-
 		match self {
 			[bb] {
 				return ImpossibleOperationError(Cannot flatten a double-flat note modifier);
 			}
 			[b] {
-				flattened = [bb];
+				return [bb];
 			}
 			[] {
-				flattened = [b];
+				return [b];
 			}
 			[s] {
-				flattened = [];
+				return [];
 			}
 			[ss] {
-				flattened = [s];
+				return [s];
 			}
 			[sss] {
-				flattened = [ss];
+				return [ss];
 			}
 		}
-
-		return flattened;
 	}
 
 	pub sharpen (self : Self) => Self | ImpossibleOperationError {
-		sharpened : Self = defer;
-
 		match self {
 			[bb] {
-				sharpened = [b];
+				return [b];
 			}
 			[b] {
-				sharpened = [];
+				return [];
 			}
 			[] {
-				sharpened = [s];
+				return [s];
 			}
 			[s] {
-				sharpened = [ss];
+				return [ss];
 			}
 			[ss] {
-				sharpened = [sss];
+				return [sss];
 			}
 			[sss] {
 				return ImpossibleOperationError(Cannot sharpen a triple-sharp note modifier);
 			}
 		}
-
-		return sharpened;
 	}
 }
 
 impl Log for Modifier {
 	pub log (self : Self) => text {
-		log_value : text = defer;
-
 		match self {
 			[bb] {
-				log_value = (𝄫);
+				return (𝄫);
 			}
 			[b] {
-				log_value = (♭);
+				return (♭);
 			}
 			[] {
-				log_value = (♮);
+				return (♮);
 			}
 			[s] {
-				log_value = (♯);
+				return (♯);
 			}
 			[ss] {
-				log_value = (𝄪);
+				return (𝄪);
 			}
 			[sss] {
-				log_value = (♯𝄪);
+				return (♯𝄪);
 			}
 		}
-
-		return log_value;
 	}
 }
 
 impl KeyboardFriendlyName for Modifier {
 	pub get_keyboard_friendly_name (self : Self) => text {
-		keyboard_friendly_name : text = defer;
-
 		match self {
 			[bb] {
-				keyboard_friendly_name = (bb);
+				return (bb);
 			}
 			[b] {
-				keyboard_friendly_name = (b);
+				return (b);
 			}
 			[] {
-				keyboard_friendly_name = ();
+				return ();
 			}
 			[s] {
-				keyboard_friendly_name = (s);
+				return (s);
 			}
 			[ss] {
-				keyboard_friendly_name = (ss);
+				return (ss);
 			}
 			[sss] {
-				keyboard_friendly_name = (sss);
+				return (sss);
 			}
 		}
-
-		return keyboard_friendly_name;
 	}
 }
