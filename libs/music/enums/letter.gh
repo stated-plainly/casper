@@ -9,8 +9,28 @@ imports: {
 
 ---
 
-import log::Log;
 import keyboard_friendly_name::KeyboardFriendlyName;
+import log::Log;
+
+static keyboard_friendly_names : [_] text = [
+	(c),
+	(d),
+	(e),
+	(f),
+	(g),
+	(a),
+	(b),
+];
+
+static log_names : [_] text = [
+	(C),
+	(D),
+	(E),
+	(F),
+	(G),
+	(A),
+	(B),
+];
 
 export enum Letter {
 	[C],
@@ -76,36 +96,14 @@ impl Letter {
 	}
 }
 
-impl Log for Letter {
-	pub log (ref self : Self) => text {
-		match self {
-			[C] {
-				return (C);
-			}
-			[D] {
-				return (D);
-			}
-			[E] {
-				return (E);
-			}
-			[F] {
-				return (F);
-			}
-			[G] {
-				return (G);
-			}
-			[A] {
-				return (A);
-			}
-			[B] {
-				return (B);
-			}
-		}
+impl KeyboardFriendlyName for Letter {
+	pub get_keyboard_friendly_name (ref self : Self) => ref text {
+		return keyboard_friendly_names[self];
 	}
 }
 
-impl KeyboardFriendlyName for Letter {
-	pub get_keyboard_friendly_name (ref self : Self) => text {
-		return self.log().to_lower();
+impl Log for Letter {
+	pub log (ref self : Self) => ref text {
+		return log_names[self];
 	}
 }

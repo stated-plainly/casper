@@ -12,7 +12,7 @@ imports: {
 import keyboard_friendly_name::KeyboardFriendlyName;
 import log::Log;
 
-static keyboard_friendly_names : [_]text = [
+static keyboard_friendly_names : [_] text = [
 	(1),
 	(2b),
 	(2),
@@ -36,7 +36,7 @@ static keyboard_friendly_names : [_]text = [
 	(13),
 ];
 
-static log_names : [_]text = [
+static log_names : [_] text = [
 	(1),
 	(2♭),
 	(2♮),
