@@ -1,0 +1,136 @@
+imports: {
+	log: {
+		local: (^libs/traits/log)
+	}
+	keyboard_friendly_name: {
+		local: (^libs/traits/keyboard_friendly_name)
+	}
+}
+
+---
+
+import log::Log;
+import keyboard_friendly_name::KeyboardFriendlyName;
+
+export enum NoteModifier {
+	[bb],
+	[b],
+	[],
+	[s],
+	[ss],
+	[sss],
+}
+
+impl NoteLetter {
+	pub flatten (self : Self) => Self | ImpossibleOperationError {
+		flattened : Self = defer;
+
+		match self {
+			[bb] {
+				return ImpossibleOperationError(Cannot flatten a double-flat note modifier);
+			}
+			[b] {
+				flattened = [bb];
+			}
+			[] {
+				flattened = [b];
+			}
+			[s] {
+				flattened = [];
+			}
+			[ss] {
+				flattened = [s];
+			}
+			[sss] {
+				flattened = [ss];
+			}
+		}
+
+		return flattened;
+	}
+
+	pub sharpen (self : Self) => Self | ImpossibleOperationError {
+		sharpened : Self = defer;
+
+		match self {
+			[bb] {
+				sharpened = [b];
+			}
+			[b] {
+				sharpened = [];
+			}
+			[] {
+				sharpened = [s];
+			}
+			[s] {
+				sharpened = [ss];
+			}
+			[ss] {
+				sharpened = [sss];
+			}
+			[sss] {
+				return ImpossibleOperationError(Cannot sharpen a triple-sharp note modifier);
+			}
+		}
+
+		return sharpened;
+	}
+}
+
+impl Log for NoteLetter {
+	pub log (self : Self) => text {
+		log_value : text = defer;
+
+		match self {
+			[bb] {
+				log_value = (𝄫);
+			}
+			[b] {
+				log_value = (♭);
+			}
+			[] {
+				log_value = (♮);
+			}
+			[s] {
+				log_value = (♯);
+			}
+			[ss] {
+				log_value = (𝄪);
+			}
+			[sss] {
+				log_value = (♯𝄪);
+			}
+		}
+
+		return log_value;
+	}
+}
+
+impl KeyboardFriendlyName for NoteLetter {
+	pub get_keyboard_friendly_name (self : Self) => text {
+		keyboard_friendly_name : text = defer;
+
+		match self {
+			[bb] {
+				keyboard_friendly_name = (bb);
+			}
+			[b] {
+				keyboard_friendly_name = (b);
+			}
+			[] {
+				keyboard_friendly_name = ();
+			}
+			[s] {
+				keyboard_friendly_name = (s);
+			}
+			[ss] {
+				keyboard_friendly_name = (ss);
+			}
+			[sss] {
+				keyboard_friendly_name = (sss);
+			}
+		}
+
+		return keyboard_friendly_name;
+	}
+}
