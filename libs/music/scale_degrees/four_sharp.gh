@@ -1,7 +1,0 @@
-import ScaleDegree from @path(parent/_scale_degree);
-
-export class FourSharp : ScaleDegree {
-	constructor () {
-		super((4#), (6));
-	}
-}

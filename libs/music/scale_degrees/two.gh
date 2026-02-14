@@ -1,7 +1,0 @@
-import ScaleDegree from @path(parent/_scale_degree);
-
-export class Two : ScaleDegree {
-	constructor () {
-		super((2), (2));
-	}
-}

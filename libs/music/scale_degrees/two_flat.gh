@@ -1,7 +1,0 @@
-import ScaleDegree from @path(parent/_scale_degree);
-
-export class TwoFlat : ScaleDegree {
-	constructor () {
-		super((2b), (1));
-	}
-}

@@ -1,7 +1,0 @@
-import ScaleDegree from @path(parent/_scale_degree);
-
-export class FiveFlat : ScaleDegree {
-	constructor () {
-		super((5b), (6));
-	}
-}

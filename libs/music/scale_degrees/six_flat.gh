@@ -1,7 +1,0 @@
-import ScaleDegree from @path(parent/_scale_degree);
-
-export class SixFlat : ScaleDegree {
-	constructor () {
-		super((6b), (8));
-	}
-}
