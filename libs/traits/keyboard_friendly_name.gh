@@ -1,0 +1,3 @@
+export trait KeyboardFriendlyName {
+	pub keyboard_friendly_name (ref self : Self) => ref text | text;
+}
