@@ -1,3 +1,15 @@
+---
+
+imports: {
+	error: {
+		local: (^traits/error)
+	}
+}
+
+---
+
+import error::Error;
+
 export trait Constructor {
 	pub new (?) => Self | impl Error;
 }
