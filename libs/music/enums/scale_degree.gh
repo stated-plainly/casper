@@ -1,3 +1,5 @@
+---
+
 imports: {
 	keyboard_friendly_name: {
 		local: (^libs/traits/keyboard_friendly_name)
