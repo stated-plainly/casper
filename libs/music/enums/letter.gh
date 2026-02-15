@@ -45,7 +45,7 @@ export enum Letter {
 }
 
 impl Letter {
-	pub next (ref self : Self) => Self {
+	pub next (self : ref Self) => Self {
 		match self {
 			[C] {
 				return [D];
@@ -71,7 +71,7 @@ impl Letter {
 		}
 	}
 
-	pub prev (ref self : Self) => Self {
+	pub prev (self : ref Self) => Self {
 		match self {
 			[C] {
 				return [B];
@@ -99,13 +99,13 @@ impl Letter {
 }
 
 impl KeyboardFriendlyName for Letter {
-	pub keyboard_friendly_name (ref self : Self) => ref text {
+	pub keyboard_friendly_name (self : ref Self) => ref text {
 		return keyboard_friendly_names[self];
 	}
 }
 
 impl Log for Letter {
-	pub log (ref self : Self) => ref text {
+	pub log (self : ref Self) => ref text {
 		return log_names[self];
 	}
 }

@@ -41,15 +41,15 @@ export struct Note {
 }
 
 impl Note {
-	letter (ref self : Self) => Letter {
+	letter (self : ref Self) => Letter {
 		return self.letter;
 	}
 
-	modifier (ref self : Self) => Modifier {
+	modifier (self : ref Self) => Modifier {
 		return self.modifier;
 	}
 
-	scale_degree (ref self : Self) => ScaleDegree {
+	scale_degree (self : ref Self) => ScaleDegree {
 		return self.scale_degree;
 	}
 
@@ -1052,13 +1052,13 @@ impl Constructor for Note {
 }
 
 impl KeyboardFriendlyName for Note {
-	keyboard_friendly_name (ref self : Self) => text {
+	keyboard_friendly_name (self : ref Self) => text {
 		text({self.letter.keyboard_friendly_name()}{self.modifier.keyboard_friendly_name()})
 	}
 }
 
 impl Log for Note {
-	log (ref self : Self) => text {
+	log (self : ref Self) => text {
 		text({self.letter}{self.modifier})
 	}
 }
